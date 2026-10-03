@@ -1,0 +1,188 @@
+/* ─── Home Page — Minimal Rose & Cream ─── */
+
+.loading-screen {
+  min-height: 100vh;
+  background: #fdf6f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #c0474a;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f0e4de;
+  border-top-color: #c0474a;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Page background */
+body {
+  background: #fdf6f2;
+}
+
+.home-main {
+  max-width: 780px;
+  margin: 2rem auto;
+  padding: 0 1.25rem 3rem;
+  animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Welcome banner */
+.welcome-banner {
+  background: #fff0ee;
+  border: 1.5px solid #f5d0cc;
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.welcome-banner h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1c1c1e;
+  margin: 0 0 0.35rem;
+}
+
+.welcome-banner h2 span {
+  color: #c0474a;
+}
+
+.welcome-banner p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #9e8c87;
+}
+
+/* Profile card */
+.profile-card {
+  background: #ffffff;
+  border: 1.5px solid #f0e4de;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(180, 80, 80, 0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Avatar */
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #c0474a;
+  color: #ffffff;
+  font-size: 1.35rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-info h3 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1c1c1e;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem 2.5rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.info-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #c4aba5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-value {
+  font-size: 0.95rem;
+  color: #1c1c1e;
+  font-weight: 500;
+}
+
+.info-value.mono {
+  font-family: 'Courier New', monospace;
+  font-size: 0.76rem;
+  color: #9e8c87;
+  word-break: break-all;
+}
+
+/* Shop teaser */
+.shop-teaser {
+  background: #ffffff;
+  border: 1.5px dashed #e8d8d2;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.shop-teaser h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1c1c1e;
+  margin: 0 0 0.35rem;
+}
+
+.shop-teaser p {
+  color: #9e8c87;
+  font-size: 0.9rem;
+  margin: 0 0 1.25rem;
+}
+
+.btn-shop {
+  background: #c0474a;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-shop:hover {
+  background: #a83a3d;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
