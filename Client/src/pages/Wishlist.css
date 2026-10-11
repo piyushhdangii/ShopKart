@@ -1,0 +1,122 @@
+.wishlist-main {
+  max-width: 1120px;
+  margin: 2.25rem auto;
+  padding: 0 1.5rem 3.5rem;
+  animation: fadeIn 0.35s ease;
+}
+
+.wishlist-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.wishlist-heading h1 {
+  margin: 0;
+  color: #1c1c1e;
+  font-size: 1.8rem;
+}
+
+.wishlist-state-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.wishlist-state-icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+}
+
+.wishlist-state-box h2 {
+  margin: 0 0 0.5rem;
+  color: #1c1c1e;
+  font-size: 1.35rem;
+}
+
+.wishlist-state-box p {
+  margin: 0 0 1.5rem;
+  color: #9e8c87;
+  font-size: 0.95rem;
+}
+
+.wishlist-card {
+  min-width: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1.5px solid #f0e4de;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(180, 80, 80, 0.04);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.wishlist-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(180, 80, 80, 0.1);
+}
+
+/* Shared product card actions row */
+.product-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.wishlist-btn {
+  display: inline-flex;
+  min-height: 39px;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1rem;
+  border: 1px solid #f0e4de;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #9e8c87;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wishlist-btn:hover:not(:disabled) {
+  border-color: #c0474a;
+  color: #c0474a;
+}
+
+.wishlist-btn.wishlisted {
+  border-color: #c0474a;
+  background: #fff0ee;
+  color: #c0474a;
+}
+
+.wishlist-btn.wishlisted:hover:not(:disabled) {
+  background: #c0474a;
+  color: #ffffff;
+}
+
+.wishlist-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 650px) {
+  .wishlist-main {
+    margin-top: 1.5rem;
+    padding: 0 1rem 2.5rem;
+  }
+
+  .wishlist-heading h1 {
+    font-size: 1.45rem;
+  }
+
+  .wishlist-state-box {
+    padding: 2.5rem 1rem;
+  }
+}

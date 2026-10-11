@@ -2,6 +2,14 @@ import Customer from "../models/customer.model.js";
 import bcrypt from 'bcrypt'
 import genToken from "../utils/generateToken.js";
 
+const isDatabaseUnavailable = (error) =>
+    error.name === 'MongooseServerSelectionError' ||
+    error.message?.includes('buffering timed out')
+
+const sendDatabaseUnavailable = (res) =>
+    res.status(503).json({
+        message: 'Database is unavailable. Check the server connection and try again.'
+    })
 
 const cookieOptions = {
     httpOnly: true,
@@ -54,7 +62,10 @@ export const registerCustomer = async (req,res)=>{
     }
     catch(error) {
         console.error('Register error:', error.message)
-        res.status(500).json({message: 'Server crashed', error: error.message})
+        if (isDatabaseUnavailable(error)) {
+            return sendDatabaseUnavailable(res)
+        }
+        return res.status(500).json({message: 'Unable to create account'})
     }
 }
 
@@ -89,7 +100,11 @@ export const loginCustomer = async (req,res)=>{
 
 
     } catch (error) {
-        return res.status(500).json({message:"Server Crashed"})
+        console.error('Login error:', error.message)
+        if (isDatabaseUnavailable(error)) {
+            return sendDatabaseUnavailable(res)
+        }
+        return res.status(500).json({message: 'Unable to sign in'})
     }
 }
 

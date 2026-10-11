@@ -57,3 +57,23 @@
   opacity: 0.45;
   cursor: not-allowed;
 }
+
+.navbar-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #766d69;
+  text-decoration: none;
+  padding: 0.35rem 0;
+  transition: color 0.2s;
+}
+
+.navbar-link:hover {
+  color: #c0474a;
+}
+
+.cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 700;
+}

@@ -18,4 +18,24 @@ const productApi = axios.create({
 export const getProducts = (params) => productApi.get('/', { params })
 export const getProduct = (id) => productApi.get(`/${id}`)
 
+const wishlistApi = axios.create({
+    baseURL: 'http://localhost:8001/wishlist',
+    withCredentials: true,
+})
+
+export const getWishlist = () => wishlistApi.get('/')
+export const addToWishlist = (productId) => wishlistApi.post(`/${productId}`)
+export const removeFromWishlist = (productId) => wishlistApi.delete(`/${productId}`)
+export const toggleWishlistItem = (productId) => wishlistApi.patch(`/${productId}/toggle`)
+
+const cartApi = axios.create({
+    baseURL: 'http://localhost:8001/cart',
+    withCredentials: true,
+})
+
+export const getCart = () => cartApi.get('/')
+export const addToCart = (productId) => cartApi.post(`/${productId}`)
+export const updateCartQuantity = (productId, quantity) => cartApi.patch(`/${productId}`, { quantity })
+export const removeCartItem = (productId) => cartApi.delete(`/${productId}`)
+
 export default api

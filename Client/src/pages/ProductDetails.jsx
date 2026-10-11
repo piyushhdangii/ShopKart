@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-import { getProduct } from '../services/api'
+import { addToCart, getProduct } from '../services/api'
+import { useCart } from '../context/CartContext'
 import './Products.css'
 
 const formatPrice = (price) =>
@@ -14,7 +15,8 @@ const formatPrice = (price) =>
 export default function ProductDetails() {
   const { id } = useParams()
   const [result, setResult] = useState({ id: null, product: null, error: false })
-  const [addedProductId, setAddedProductId] = useState(null)
+  const [cartButtonState, setCartButtonState] = useState('idle')
+  const { cartItems, addCartItem, refreshCart } = useCart()
 
   useEffect(() => {
     let currentRequest = true
@@ -35,7 +37,21 @@ export default function ProductDetails() {
   const loading = result.id !== id
   const error = !loading && result.error
   const product = loading ? null : result.product
-  const added = addedProductId === id
+  const inCart = cartItems.some((item) => item.product?._id === id)
+
+  const handleAddToCart = async () => {
+    if (cartButtonState === 'saving' || !product || product.stock === 0) return
+    setCartButtonState('saving')
+    try {
+      await addToCart(product._id)
+      addCartItem(product._id)
+      await refreshCart()
+      setCartButtonState('idle')
+    } catch {
+      setCartButtonState('error')
+      setTimeout(() => setCartButtonState('idle'), 2000)
+    }
+  }
 
   return (
     <>
@@ -64,10 +80,10 @@ export default function ProductDetails() {
               <button
                 className="product-details-button add-to-cart-button"
                 type="button"
-                disabled={product.stock === 0}
-                onClick={() => setAddedProductId(id)}
+                disabled={product.stock === 0 || cartButtonState === 'saving'}
+                onClick={handleAddToCart}
               >
-                {added ? 'Added to Cart' : 'Add to Cart'}
+                {cartButtonState === 'saving' ? 'Adding...' : inCart ? 'Add Another' : 'Add to Cart'}
               </button>
             </div>
           </article>

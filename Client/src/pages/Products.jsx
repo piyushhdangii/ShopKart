@@ -2,14 +2,25 @@ import { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import ProductCard from '../components/ProductCard'
 import SearchBar from '../components/SearchBar'
-import { getProducts } from '../services/api'
+import { getProducts, getWishlist } from '../services/api'
 import './Products.css'
 
 export default function Products() {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('')
   const [result, setResult] = useState({ key: null, products: [], error: false })
+  const [wishlistIds, setWishlistIds] = useState([])
   const requestKey = JSON.stringify([search.trim(), category])
+
+  useEffect(() => {
+    getWishlist()
+      .then((res) => {
+        setWishlistIds(res.data.wishlist.map((p) => p._id))
+      })
+      .catch(() => {
+        // user may not be logged in; wishlist toggle will still work per-card
+      })
+  }, [])
 
   useEffect(() => {
     let currentRequest = true
@@ -62,7 +73,13 @@ export default function Products() {
           <div className="catalogue-message">No products found.</div>
         ) : (
           <section className="product-grid" aria-label="Products">
-            {products.map((product) => <ProductCard key={product._id} product={product} />)}
+            {products.map((product) => (
+              <ProductCard
+                key={product._id}
+                product={product}
+                isWishlisted={wishlistIds.includes(product._id)}
+              />
+            ))}
           </section>
         )}
       </main>

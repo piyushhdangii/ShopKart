@@ -17,9 +17,11 @@ export default function SearchBar({ search, category, onSearchChange, onCategory
         <select value={category} onChange={(event) => onCategoryChange(event.target.value)}>
           <option value="">All Categories</option>
           <option value="Electronics">Electronics</option>
-          <option value="Fashion">Fashion</option>
+          <option value="Clothing">Clothing</option>
           <option value="Books">Books</option>
           <option value="Home">Home</option>
+          <option value = "Footwear">Footwear</option>
+          <option value = "Accessories">Accessories</option>
         </select>
       </label>
     </div>
