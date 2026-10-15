@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { removeCartItem, updateCartQuantity } from '../services/api'
 import { useCart } from '../context/CartContext'
@@ -13,6 +13,7 @@ const formatPrice = (price) =>
   }).format(price)
 
 export default function Cart() {
+  const navigate = useNavigate()
   const { cartItems, cartLoading, cartError, refreshCart, updateCartItemQuantity, removeCartItem: removeCartLocal, subtotal, cartCount } = useCart()
   const [updatingId, setUpdatingId] = useState(null)
   const [removingId, setRemovingId] = useState(null)
@@ -147,7 +148,9 @@ export default function Cart() {
                 <span>Subtotal</span>
                 <strong>{formatPrice(subtotal)}</strong>
               </div>
-              <button type="button" className="product-details-button cart-checkout-button">Proceed to Checkout</button>
+              <button type="button" className="product-details-button cart-checkout-button" onClick={() => navigate('/checkout')}>
+                Proceed to Checkout
+              </button>
             </aside>
           </div>
         )}

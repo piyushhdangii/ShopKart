@@ -8,6 +8,7 @@ import customerRoutes from './routes/customer.route.js'
 import productRoutes from './routes/product.route.js'
 import wishlistRoutes from './routes/wishlist.route.js'
 import cartRoutes from './routes/cart.route.js'
+import orderRoutes from './routes/order.route.js'
 const app = express()
 const Port = 8001
 dotenv.config()
@@ -24,6 +25,7 @@ app.use('/users', customerRoutes)
 app.use('/products', productRoutes)
 app.use('/wishlist', wishlistRoutes)
 app.use('/cart', cartRoutes)
+app.use('/orders', orderRoutes)
 
 app.get("/",(req,res)=>{
     res.send("Hello")

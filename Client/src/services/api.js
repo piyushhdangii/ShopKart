@@ -38,4 +38,14 @@ export const addToCart = (productId) => cartApi.post(`/${productId}`)
 export const updateCartQuantity = (productId, quantity) => cartApi.patch(`/${productId}`, { quantity })
 export const removeCartItem = (productId) => cartApi.delete(`/${productId}`)
 
+const orderApi = axios.create({
+    baseURL: 'http://localhost:8001/orders',
+    withCredentials: true,
+})
+
+export const createPaymentOrder = (data) => orderApi.post('/create-payment-order', data)
+export const verifyPayment = (data) => orderApi.post('/verify-payment', data)
+export const getOrders = () => orderApi.get('/')
+export const getOrderById = (id) => orderApi.get(`/${id}`)
+
 export default api

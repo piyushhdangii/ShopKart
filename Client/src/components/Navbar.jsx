@@ -35,6 +35,7 @@ export default function Navbar({ customerName }) {
         <Link to="/home" className="navbar-link">Home</Link>
         <Link to="/products" className="navbar-link">Products</Link>
         <Link to="/wishlist" className="navbar-link">Wishlist</Link>
+        <Link to="/orders" className="navbar-link">My Orders</Link>
         <Link to="/cart" className="navbar-link cart-link">
           Cart {cartCount > 0 ? `(${cartCount})` : ''}
         </Link>

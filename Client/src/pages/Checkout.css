@@ -1,0 +1,133 @@
+.checkout-shell {
+  max-width: 1180px;
+  margin: 2.25rem auto;
+  padding: 0 1.5rem 3.5rem;
+}
+
+.checkout-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.checkout-page h1 {
+  margin: 0;
+  color: #1c1c1e;
+  font-size: 2rem;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.7fr);
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.checkout-card {
+  background: #fff;
+  border: 1.5px solid #f0e4de;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(180, 80, 80, 0.04);
+  padding: 1.2rem 1.25rem;
+}
+
+.checkout-card h2 {
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+  color: #1c1c1e;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.field-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.field-group label {
+  color: #4a403d;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.field-group input {
+  min-height: 46px;
+  padding: 0.7rem 0.85rem;
+  border: 1.5px solid #f0e4de;
+  border-radius: 10px;
+  font: inherit;
+  color: #1c1c1e;
+  background: #fff;
+}
+
+.field-group input:focus {
+  outline: 2px solid rgba(192, 71, 74, 0.14);
+  border-color: #c0474a;
+}
+
+.input-error {
+  border-color: #d9534f !important;
+}
+
+.error-msg {
+  color: #b51d1d;
+  font-size: 0.78rem;
+}
+
+.summary-card {
+  position: sticky;
+  top: 1rem;
+}
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #1c1c1e;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.9rem;
+  margin: 1rem 0 1.1rem;
+  border-top: 1px solid #f0e4de;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.alert {
+  border-radius: 10px;
+  padding: 0.8rem 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.alert-error {
+  background: rgba(197, 45, 45, 0.08);
+  color: #9d1d1d;
+  border: 1px solid rgba(197, 45, 45, 0.16);
+}
+
+@media (max-width: 760px) {
+  .checkout-grid,
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+}
