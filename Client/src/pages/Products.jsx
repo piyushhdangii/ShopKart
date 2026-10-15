@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import ProductCard from '../components/ProductCard'
 import SearchBar from '../components/SearchBar'
@@ -6,8 +7,9 @@ import { getProducts, getWishlist } from '../services/api'
 import './Products.css'
 
 export default function Products() {
+  const [searchParams] = useSearchParams()
   const [search, setSearch] = useState('')
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState(() => searchParams.get('category') || '')
   const [result, setResult] = useState({ key: null, products: [], error: false })
   const [wishlistIds, setWishlistIds] = useState([])
   const requestKey = JSON.stringify([search.trim(), category])
@@ -78,6 +80,13 @@ export default function Products() {
                 key={product._id}
                 product={product}
                 isWishlisted={wishlistIds.includes(product._id)}
+                onWishlistChange={(productId, added) => {
+                  setWishlistIds((currentIds) => (
+                    added
+                      ? [...new Set([...currentIds, productId])]
+                      : currentIds.filter((id) => id !== productId)
+                  ))
+                }}
               />
             ))}
           </section>

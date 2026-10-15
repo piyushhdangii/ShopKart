@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { getOrderById } from '../services/api'
+import './Products.css'
 import './Orders.css'
 
 const formatPrice = (price) =>
@@ -57,7 +58,7 @@ export default function OrderDetails() {
       <>
         <Navbar />
         <main className="orders-main">
-          <div className="wishlist-state-box">
+          <div className="orders-state-box">
             <span className="wishlist-state-icon">⚠️</span>
             <h2>Order not found</h2>
             <p>{error || 'This order could not be found.'}</p>

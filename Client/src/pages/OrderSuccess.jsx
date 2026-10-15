@@ -1,5 +1,6 @@
 import { Link, useLocation, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import './Products.css'
 import './Orders.css'
 
 const formatPrice = (price) =>

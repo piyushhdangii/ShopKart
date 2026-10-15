@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { getOrders } from '../services/api'
+import './Products.css'
 import './Orders.css'
 
 const formatPrice = (price) =>
@@ -55,13 +56,13 @@ export default function Orders() {
         {loading ? (
           <div className="catalogue-message">Loading your orders...</div>
         ) : error ? (
-          <div className="wishlist-state-box">
+          <div className="orders-state-box">
             <span className="wishlist-state-icon">⚠️</span>
             <h2>Unable to load orders.</h2>
             <p>{error}</p>
           </div>
         ) : orders.length === 0 ? (
-          <div className="wishlist-state-box">
+          <div className="orders-state-box">
             <span className="wishlist-state-icon">🛍️</span>
             <h2>You have not placed any orders yet.</h2>
             <p>Start shopping to create your first purchase.</p>

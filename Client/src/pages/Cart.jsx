@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { removeCartItem, updateCartQuantity } from '../services/api'
 import { useCart } from '../context/CartContext'
+import './Products.css'
 import './Cart.css'
 
 const formatPrice = (price) =>
@@ -60,7 +61,7 @@ export default function Cart() {
   return (
     <>
       <Navbar />
-      <main className="products-main">
+      <main className="cart-main">
         <header className="products-heading">
           <div>
             <p className="products-eyebrow">SHOPKART CART</p>
@@ -72,14 +73,14 @@ export default function Cart() {
         {cartLoading ? (
           <div className="catalogue-message" role="status">Loading your cart...</div>
         ) : cartError ? (
-          <div className="wishlist-state-box">
+          <div className="cart-state-box">
             <span className="wishlist-state-icon">⚠️</span>
             <h2>Unable to load your cart.</h2>
             <p>Try again in a moment.</p>
             <button className="product-details-button" onClick={refreshCart} type="button">Try Again</button>
           </div>
         ) : items.length === 0 ? (
-          <div className="wishlist-state-box">
+          <div className="cart-state-box">
             <span className="wishlist-state-icon">🛒</span>
             <h2>Your cart is empty</h2>
             <p>Looks like you haven't added anything yet.</p>

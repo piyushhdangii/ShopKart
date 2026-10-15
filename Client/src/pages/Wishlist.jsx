@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import WishlistCard from '../components/WishlistCard'
 import { getWishlist } from '../services/api'
+import './Products.css'
 import './Wishlist.css'
 
 export default function Wishlist() {

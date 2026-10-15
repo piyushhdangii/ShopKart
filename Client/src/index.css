@@ -1,9 +1,23 @@
-/* Global reset for ShopKart — Minimal Rose & Cream */
+/* Shared ShopKart design tokens, derived from the Home page theme. */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 :root {
+  --page-bg: #fbfaf6;
+  --text-primary: #24251f;
+  --text-secondary: #73746c;
+  --text-muted: #85867d;
+  --olive: #788452;
+  --olive-hover: #626d3f;
+  --olive-pale: #f0f1e8;
+  --surface: #ffffff;
+  --surface-soft: #f4f4ef;
+  --border: #eeeee7;
+  --border-strong: #dedfd2;
+  --danger: #a7483e;
+  --card-shadow: 0 3px 12px rgba(50, 52, 41, 0.04);
+  --card-shadow-hover: 0 9px 22px rgba(50, 52, 41, 0.1);
   font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11,8 +25,8 @@
 
 body {
   margin: 0;
-  background: #fdf6f2;
-  color: #1c1c1e;
+  background: var(--page-bg);
+  color: var(--text-primary);
 }
 
 #root {
@@ -26,4 +40,12 @@ a {
 
 button {
   font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
 }

@@ -2,12 +2,13 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #ffffff;
-  border-bottom: 1.5px solid #f0e4de;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid #ebebe4;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.9rem 1.75rem;
+  padding: 0.78rem max(24px, calc((100% - 1180px) / 2));
+  gap: 1rem;
 }
 
 .navbar-brand {
@@ -16,32 +17,32 @@
   gap: 0.45rem;
   font-size: 1.15rem;
   font-weight: 700;
-  color: #c0474a;
+  color: #667344;
   text-decoration: none;
   letter-spacing: -0.3px;
 }
 
 .navbar-brand:hover {
-  color: #a83a3d;
+  color: #47522d;
 }
 
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .navbar-user {
   font-size: 0.875rem;
-  color: #9e8c87;
+  color: #85867d;
 }
 
 .btn-logout {
   padding: 0.4rem 1rem;
   background: transparent;
-  border: 1.5px solid #c0474a;
-  border-radius: 8px;
-  color: #c0474a;
+  border: 1px solid #788452;
+  border-radius: 7px;
+  color: #667344;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -49,7 +50,7 @@
 }
 
 .btn-logout:hover:not(:disabled) {
-  background: #c0474a;
+  background: #788452;
   color: #ffffff;
 }
 
@@ -61,14 +62,14 @@
 .navbar-link {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #766d69;
+  color: #62645a;
   text-decoration: none;
   padding: 0.35rem 0;
   transition: color 0.2s;
 }
 
 .navbar-link:hover {
-  color: #c0474a;
+  color: #667344;
 }
 
 .cart-link {
@@ -76,4 +77,39 @@
   align-items: center;
   gap: 0.25rem;
   font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.7rem 16px 0.55rem;
+    gap: 0.55rem;
+  }
+
+  .navbar-right {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.1rem;
+    scrollbar-width: none;
+  }
+
+  .navbar-right::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar-user {
+    display: none;
+  }
+
+  .navbar-link {
+    flex: 0 0 auto;
+    font-size: 0.8rem;
+  }
+
+  .btn-logout {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
 }

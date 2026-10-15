@@ -93,7 +93,7 @@ export default function Register() {
               id="fullName"
               name="fullName"
               type="text"
-              placeholder="Piyush Dangi"
+              placeholder="John Smith"
               value={form.fullName}
               onChange={handleChange}
               className={errors.fullName ? 'input-error' : ''}
